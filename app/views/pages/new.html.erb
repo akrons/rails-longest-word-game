@@ -1,0 +1,14 @@
+<h1>New Game</h1>
+<div class='d-flex justify-content-between'>
+  <% @letters.each do |letter| %>
+    <div class="letter-card"><%= letter %></div>
+  <% end %>
+</div>
+
+<form action="/score" method="POST" data-turbo="false" class='guess-form' >
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <label for="guess">What's the longest word?</label>
+  <input name="letters" type="hidden" value=<%=@letters.join%>>
+  <input id="guess" name="guess" type="text" placeholder="Enter your guess here">
+  <input type="submit" value="Play">
+</form>
